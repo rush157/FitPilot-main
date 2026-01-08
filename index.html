@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FitPilot: AI Fitness & Wellness Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.27.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-player/youtube": "https://aistudiocdn.com/react-player@^2.16.0/youtube",
+    "react-player/": "https://aistudiocdn.com/react-player@^3.3.3/"
+  }
+}
+</script>
+<style>
+  @keyframes shine {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  .completed-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .completed-shine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      110deg,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 60%
+    );
+    background-size: 200% 100%;
+    animation: shine 2s ease-in-out;
+  }
+  .tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .has-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+  .custom-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+  }
+  
+  @keyframes wave {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-25%); }
+    100% { transform: translateX(0); }
+  }
+
+  .liquid-progress-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liquid-fill {
+    position: absolute;
+    bottom: 0;
+    left: -50%; /* Start off-screen to allow for wave movement */
+    width: 200%; /* Make it wider than the card for the wave effect */
+    height: var(--progress-percent, 0%);
+    background: rgba(99, 102, 241, 0.2); /* Semi-transparent indigo */
+    transition: height 0.8s ease-in-out;
+    border-top: 2px solid rgba(99, 102, 241, 0.4);
+  }
+
+  .liquid-fill::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><path fill="rgba(99, 102, 241, 0.3)" d="M0,10 C25,20 75,0 100,10 V20 H0 Z"></path></svg>');
+    background-size: 50% 100%;
+    background-repeat: repeat-x;
+    animation: wave 3s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  }
+</style>
+</head>
+  <body class="bg-slate-50">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "FitPilot: AI Fitness & Wellness Assistant",
+  "description": "A smart fitness and wellness assistant that provides personalized workout, diet, and habit recommendations using the Gemini API. It analyzes user data to create scalable, intelligent, and privacy-focused fitness plans.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
